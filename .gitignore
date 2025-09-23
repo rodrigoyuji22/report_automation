@@ -1,1 +1,3 @@
 /src/config.py
+.venv
+/output/rev_report.xlsx
