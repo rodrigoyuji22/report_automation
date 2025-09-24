@@ -93,4 +93,6 @@ def export_to_excel(df: pd.DataFrame, filename: str):
         # ===== LARGURA AUTOMÁTICA =====
         for i, col in enumerate(df.columns):
             maxlen = max(df[col].astype(str).map(len).max(), len(col)) + 2
-            worksheet.set_column(i, i, max(12, maxlen))
+            worksheet.set_column(i, i, max(12, maxlen))    
+        # ===== ZOOM PRÉ-DEFINIDO =====
+        worksheet.set_zoom(120)
