@@ -31,6 +31,7 @@ def export_to_excel(df: pd.DataFrame, filename: str):
         date_fmt = workbook.add_format({"num_format": 'dd/mm/yyyy', "border": 1})
         normal_fmt = workbook.add_format({"border": 1})
         yellow_fmt = workbook.add_format({"bg_color": YELLOW, "border": 1})
+        yellow_date_fmt = workbook.add_format({"bg_color": YELLOW, "num_format": "dd/mm/yyyy", "border": 1})
         green_fmt  = workbook.add_format({"bg_color": GREEN_L, "num_format": 'R$ #,##0.00', "border": 1})
         total_label_fmt = workbook.add_format({
             "bold": True, "align": "right", "fg_color": BLUE_TOTAL,
@@ -71,7 +72,10 @@ def export_to_excel(df: pd.DataFrame, filename: str):
                 if "Frete" in colmap and col_num == colmap["Frete"] and isinstance(value, (int, float)) and value != 0:
                     fmt = green_fmt
                 if use_yellow:
-                    fmt = yellow_fmt
+                    if df.columns[col_num] in DATA_COLS and pd.notna(value):
+                        fmt = yellow_date_fmt
+                    else:
+                        fmt = yellow_fmt
 
                 worksheet.write(row_num+4, col_num, value, fmt)
 
