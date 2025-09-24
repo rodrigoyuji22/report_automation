@@ -1,14 +1,21 @@
 import pyodbc
 import pandas as pd
-from config import DB_DATABASE, DB_PWD, DB_SERVER, DB_UID
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+serverName = os.getenv("DB_SERVER")
+database = os.getenv("DB_DATABASE")
+uid = os.getenv("DB_UID")
+pwd = os.getenv("DB_PWD")
 
 def get_connection() -> pyodbc.Connection:
     connectionString = (
         "DRIVER={ODBC Driver 18 for SQL Server};"
-        f"SERVER={DB_SERVER};"
-        f"DATABASE={DB_DATABASE};"
-        f"UID={DB_UID};"
-        f"PWD={DB_PWD};"
+        f"SERVER={serverName};"
+        f"DATABASE={database};"
+        f"UID={uid};"
+        f"PWD={pwd};"
         "Encrypt=no;"
         "TrustServerCertificate=yes;"
     ) 
