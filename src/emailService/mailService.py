@@ -1,7 +1,7 @@
 import smtplib
 from email.message import EmailMessage
 from pathlib import Path
-import ssl
+
 
 def send_email(_origin, _password, _destiny, _subject, _body, _attachment = None):
     msg = EmailMessage()
