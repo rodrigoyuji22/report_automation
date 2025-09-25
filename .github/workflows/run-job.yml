@@ -33,4 +33,5 @@ jobs:
           echo "${{ secrets.DOTENV_FILE }}" > .env
 
       - name: Run script
-        run: python src/main.py
+        working-directory: ./src
+        run: python main.py
