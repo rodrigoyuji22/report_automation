@@ -26,7 +26,6 @@ def run_query (query: str) -> pd.DataFrame:
     with get_connection() as conn:
         return pd.read_sql(query, conn)
 # metodo para abrir a conexao, executar a query e depois fechar a conexao (com with executa o bloco e depois fecha a conexao)
-#
 
 
 
