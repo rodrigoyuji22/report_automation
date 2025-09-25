@@ -11,7 +11,7 @@ pwd = os.getenv("DB_PWD")
 
 def get_connection() -> pyodbc.Connection:
     connectionString = (
-        "DRIVER={ODBC Driver 18 for SQL Server};"
+        "DRIVER={ODBC Driver 17 for SQL Server};"
         f"SERVER={serverName};"
         f"DATABASE={database};"
         f"UID={uid};"
@@ -26,6 +26,7 @@ def run_query (query: str) -> pd.DataFrame:
     with get_connection() as conn:
         return pd.read_sql(query, conn)
 # metodo para abrir a conexao, executar a query e depois fechar a conexao (com with executa o bloco e depois fecha a conexao)
+#
 
 
 
