@@ -26,7 +26,7 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "${{ secrets.DOTENV_FILE}}" > .env
+          echo "${{ secrets.DOTENV_FILE }}" > .env
 
       - name: Run script
         run: python main.py
